@@ -6,64 +6,92 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>GMMIE Veritas Lab</title>
     <style>
+        :root {
+            --primary: #0c3c60;
+            --accent: #e1f0ff;
+            --text: #1a1a1a;
+            --light: #ffffff;
+        }
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
-            background: linear-gradient(to right, #e9f5ff, #ffffff);
-            color: #002b4d;
+            background: var(--accent);
+            color: var(--text);
+            line-height: 1.6;
         }
         header {
-            background-color: #002b4d;
-            color: #ffffff;
-            padding: 40px 20px;
+            background: var(--primary);
+            color: var(--light);
+            padding: 60px 20px;
             text-align: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        }
+        header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+        }
+        header p {
+            font-size: 1.1rem;
+            font-weight: 300;
         }
         section {
-            padding: 40px 20px;
-            max-width: 1000px;
+            padding: 60px 20px;
+            max-width: 1100px;
             margin: auto;
         }
         h2 {
-            color: #002b4d;
-            border-bottom: 2px solid #ccc;
-            padding-bottom: 10px;
+            color: var(--primary);
+            font-size: 2rem;
+            border-left: 5px solid var(--primary);
+            padding-left: 15px;
+            margin-bottom: 30px;
         }
         ul {
-            list-style-type: none;
+            list-style: none;
             padding: 0;
         }
         ul li {
             padding: 10px 0;
+            font-size: 1.05rem;
         }
         .gallery {
             display: flex;
             flex-wrap: wrap;
-            gap: 15px;
+            gap: 20px;
             justify-content: center;
         }
         .gallery img {
             width: 300px;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        .gallery img:hover {
+            transform: scale(1.05);
         }
         .testimonials {
-            background-color: #f2faff;
-            border-left: 5px solid #0077b6;
+            background-color: #ffffff;
+            border-left: 6px solid var(--primary);
             margin: 20px 0;
-            padding: 20px;
+            padding: 25px 20px;
             font-style: italic;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.07);
         }
         .contact {
-            background-color: #f9f9f9;
-            padding: 20px;
-            border-radius: 6px;
+            background-color: #f4faff;
+            padding: 30px;
+            border-radius: 10px;
+            font-size: 1.05rem;
+        }
+        .contact p {
+            margin: 10px 0;
         }
         footer {
-            background-color: #002b4d;
+            background-color: var(--primary);
             color: white;
             text-align: center;
-            padding: 15px;
-            margin-top: 40px;
+            padding: 20px;
+            margin-top: 60px;
         }
     </style>
 </head>
@@ -76,22 +104,22 @@
     <section>
         <h2>What We Offer</h2>
         <ul>
-            <li>🌐 Web Design & Development – Visually stunning, responsive websites built to perform.</li>
-            <li>🧠 UI/UX Design – Clean, user-friendly experiences with aesthetic clarity.</li>
-            <li>🎨 Brand Identity & Strategy – Memorable branding that tells your story with style.</li>
-            <li>✨ Motion & Interactive Design – Sleek animations & transitions that bring your brand to life.</li>
-            <li>🖼 Graphic Design (Digital & Print) – From social media visuals to sharp print assets.</li>
-            <li>🧭 Creative Consultation – Expert advice to turn your vision into results.</li>
-            <li>🏡 Real Estate Media – Specializing in stunning property visuals & digital marketing.</li>
+            <li>🌐 <strong>Web Design & Development</strong> – Visually stunning, responsive websites built to perform.</li>
+            <li>🧠 <strong>UI/UX Design</strong> – Clean, user-friendly experiences with aesthetic clarity.</li>
+            <li>🎨 <strong>Brand Identity & Strategy</strong> – Memorable branding that tells your story with style.</li>
+            <li>✨ <strong>Motion & Interactive Design</strong> – Sleek animations & transitions that bring your brand to life.</li>
+            <li>🖼 <strong>Graphic Design</strong> – Social media visuals to premium print assets.</li>
+            <li>🧭 <strong>Creative Consultation</strong> – Expert advice to turn your vision into results.</li>
+            <li>🏡 <strong>Real Estate Media</strong> – Captivating visuals for real estate marketing success.</li>
         </ul>
     </section>
 
     <section>
         <h2>Gallery</h2>
         <div class="gallery">
-            <img src="https://via.placeholder.com/300x200?text=Property+Shot+1" alt="Property Shot">
-            <img src="https://via.placeholder.com/300x200?text=Brand+Design+1" alt="Brand Design">
-            <img src="https://via.placeholder.com/300x200?text=Interior+1" alt="Interior Design">
+            <img src="https://via.placeholder.com/300x200?text=Property+Shot+1" alt="Property Shot 1">
+            <img src="https://via.placeholder.com/300x200?text=Brand+Design+1" alt="Brand Design 1">
+            <img src="https://via.placeholder.com/300x200?text=Interior+Design" alt="Interior Design">
         </div>
     </section>
 
@@ -104,15 +132,15 @@
 
     <section class="contact">
         <h2>Contact Us</h2>
-        <p>📍 Nairobi, Kenya</p>
-        <p>📞 +254746061204</p>
-        <p>📧 murimijames058@gmail.com</p>
-        <p>💬 WhatsApp Available</p>
-        <p>🚀 Crafted by Creatives, Inspired by Tomorrow</p>
+        <p>📍 <strong>Based in Nairobi, Kenya</strong></p>
+        <p>📞 <strong>+254 746 061 204</strong></p>
+        <p>📧 <strong>murimijames058@gmail.com</strong></p>
+        <p>💬 <strong>WhatsApp Available</strong></p>
+        <p>🚀 <strong>Crafted by Creatives, Inspired by Tomorrow.</strong></p>
     </section>
 
     <footer>
-        <p>My pleasure — GMMIE Veritas Lab</p>
+        <p>My Pleasure — GMMIE Veritas Lab</p>
     </footer>
 </body>
 </html>
