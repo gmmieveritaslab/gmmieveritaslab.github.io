@@ -7,37 +7,63 @@
     <title>GMMIE Veritas Lab</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
-            padding: 0;
-            background: linear-gradient(to right, #e0f7ff, #ffffff);
-            color: #003366;
+            background: linear-gradient(to right, #e9f5ff, #ffffff);
+            color: #002b4d;
         }
         header {
-            background-color: #003366;
-            color: white;
-            padding: 20px;
+            background-color: #002b4d;
+            color: #ffffff;
+            padding: 40px 20px;
             text-align: center;
         }
         section {
-            padding: 20px;
+            padding: 40px 20px;
+            max-width: 1000px;
+            margin: auto;
         }
         h2 {
-            color: #003366;
+            color: #002b4d;
+            border-bottom: 2px solid #ccc;
+            padding-bottom: 10px;
         }
-        .services ul {
+        ul {
             list-style-type: none;
             padding: 0;
         }
-        .services li {
+        ul li {
             padding: 10px 0;
         }
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+        }
+        .gallery img {
+            width: 300px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .testimonials {
+            background-color: #f2faff;
+            border-left: 5px solid #0077b6;
+            margin: 20px 0;
+            padding: 20px;
+            font-style: italic;
+        }
+        .contact {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 6px;
+        }
         footer {
-            background-color: #003366;
+            background-color: #002b4d;
             color: white;
             text-align: center;
-            padding: 10px;
-            margin-top: 20px;
+            padding: 15px;
+            margin-top: 40px;
         }
     </style>
 </head>
@@ -46,7 +72,8 @@
         <h1>GMMIE Veritas Lab</h1>
         <p>Designed to Elevate Your Vision — Our Mission</p>
     </header>
-    <section class="services">
+
+    <section>
         <h2>What We Offer</h2>
         <ul>
             <li>🌐 Web Design & Development – Visually stunning, responsive websites built to perform.</li>
@@ -58,14 +85,32 @@
             <li>🏡 Real Estate Media – Specializing in stunning property visuals & digital marketing.</li>
         </ul>
     </section>
+
+    <section>
+        <h2>Gallery</h2>
+        <div class="gallery">
+            <img src="https://via.placeholder.com/300x200?text=Property+Shot+1" alt="Property Shot">
+            <img src="https://via.placeholder.com/300x200?text=Brand+Design+1" alt="Brand Design">
+            <img src="https://via.placeholder.com/300x200?text=Interior+1" alt="Interior Design">
+        </div>
+    </section>
+
+    <section>
+        <h2>What Our Clients Say</h2>
+        <div class="testimonials">“Working with GMMIE Veritas Lab was a game-changer for our brand. Professional, sharp, and truly visionary.”</div>
+        <div class="testimonials">“The real estate media solutions are top-tier. Highly recommend to anyone wanting to stand out.”</div>
+        <div class="testimonials">“From consultation to delivery — their service is premium all the way.”</div>
+    </section>
+
     <section class="contact">
         <h2>Contact Us</h2>
         <p>📍 Nairobi, Kenya</p>
         <p>📞 +254746061204</p>
         <p>📧 murimijames058@gmail.com</p>
         <p>💬 WhatsApp Available</p>
-        <p>🙌 Youth for Youth</p>
+        <p>🚀 Crafted by Creatives, Inspired by Tomorrow</p>
     </section>
+
     <footer>
         <p>My pleasure — GMMIE Veritas Lab</p>
     </footer>
