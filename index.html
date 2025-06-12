@@ -2,145 +2,166 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GMMIE Veritas Lab</title>
     <style>
-        :root {
-            --primary: #0c3c60;
-            --accent: #e1f0ff;
-            --text: #1a1a1a;
-            --light: #ffffff;
-        }
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
-            background: var(--accent);
-            color: var(--text);
-            line-height: 1.6;
+            padding: 0;
+            background-color: #f4f7fa;
+            color: #222;
         }
         header {
-            background: var(--primary);
-            color: var(--light);
-            padding: 60px 20px;
+            background-color: #003366;
+            color: white;
+            padding: 20px;
             text-align: center;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
         }
-        header h1 {
-            font-size: 2.8rem;
-            margin-bottom: 10px;
+        main {
+            padding: 40px 20px;
         }
-        header p {
-            font-size: 1.1rem;
-            font-weight: 300;
+        h1, h2 {
+            color: #003366;
         }
         section {
-            padding: 60px 20px;
-            max-width: 1100px;
-            margin: auto;
+            margin-bottom: 40px;
         }
-        h2 {
-            color: var(--primary);
-            font-size: 2rem;
-            border-left: 5px solid var(--primary);
-            padding-left: 15px;
-            margin-bottom: 30px;
+        .contact a {
+            color: #0077cc;
+            text-decoration: none;
         }
-        ul {
-            list-style: none;
-            padding: 0;
-        }
-        ul li {
-            padding: 10px 0;
-            font-size: 1.05rem;
+        .contact a:hover {
+            text-decoration: underline;
         }
         .gallery {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            justify-content: center;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
         }
         .gallery img {
-            width: 300px;
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+        .reviews {
+            background: #e9eef4;
+            padding: 20px;
             border-radius: 10px;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
         }
-        .gallery img:hover {
-            transform: scale(1.05);
+        .review {
+            margin-bottom: 20px;
         }
-        .testimonials {
-            background-color: #ffffff;
-            border-left: 6px solid var(--primary);
-            margin: 20px 0;
-            padding: 25px 20px;
+        .review p {
             font-style: italic;
-            box-shadow: 0 3px 15px rgba(0,0,0,0.07);
         }
-        .contact {
-            background-color: #f4faff;
-            padding: 30px;
-            border-radius: 10px;
-            font-size: 1.05rem;
-        }
-        .contact p {
-            margin: 10px 0;
+        .review strong {
+            display: block;
+            margin-top: 5px;
         }
         footer {
-            background-color: var(--primary);
+            background-color: #003366;
             color: white;
             text-align: center;
-            padding: 20px;
-            margin-top: 60px;
+            padding: 15px;
         }
     </style>
+
+    <style>
+        [data-animate] {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease-in-out;
+        }
+        [data-animate].visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("visible");
+                    }
+                });
+            }, { threshold: 0.1 });
+            document.querySelectorAll("[data-animate]").forEach(el => observer.observe(el));
+        });
+    </script>
 </head>
+
 <body>
     <header>
         <h1>GMMIE Veritas Lab</h1>
-        <p>Designed to Elevate Your Vision — Our Mission</p>
+        <p>Crafted by Creatives, Inspired by Tomorrow</p>
     </header>
 
-    <section>
-        <h2>What We Offer</h2>
-        <ul>
-            <li>🌐 <strong>Web Design & Development</strong> – Visually stunning, responsive websites built to perform.</li>
-            <li>🧠 <strong>UI/UX Design</strong> – Clean, user-friendly experiences with aesthetic clarity.</li>
-            <li>🎨 <strong>Brand Identity & Strategy</strong> – Memorable branding that tells your story with style.</li>
-            <li>✨ <strong>Motion & Interactive Design</strong> – Sleek animations & transitions that bring your brand to life.</li>
-            <li>🖼 <strong>Graphic Design</strong> – Social media visuals to premium print assets.</li>
-            <li>🧭 <strong>Creative Consultation</strong> – Expert advice to turn your vision into results.</li>
-            <li>🏡 <strong>Real Estate Media</strong> – Captivating visuals for real estate marketing success.</li>
-        </ul>
-    </section>
+    <main>
+        <section data-animate>
+            <h2>What We Offer</h2>
+            <ul>
+                <li><strong>Web Design & Development:</strong> Visually stunning, responsive websites built to perform.</li>
+                <li><strong>UI/UX Design:</strong> Clean, user-friendly experiences with aesthetic clarity.</li>
+                <li><strong>Brand Identity & Strategy:</strong> Memorable branding that tells your story with style.</li>
+                <li><strong>Motion & Interactive Design:</strong> Sleek animations & transitions that bring your brand to life.</li>
+                <li><strong>Graphic Design (Digital & Print):</strong> From social media visuals to sharp print assets.</li>
+                <li><strong>Creative Consultation:</strong> Expert advice to turn your vision into results.</li>
+                <li><strong>Real Estate Media Specialist</strong></li>
+            </ul>
+        </section>
 
-    <section>
-        <h2>Gallery</h2>
-        <div class="gallery">
-            <img src="https://via.placeholder.com/300x200?text=Property+Shot+1" alt="Property Shot 1">
-            <img src="https://via.placeholder.com/300x200?text=Brand+Design+1" alt="Brand Design 1">
-            <img src="https://via.placeholder.com/300x200?text=Interior+Design" alt="Interior Design">
-        </div>
-    </section>
+        <section class="gallery" data-animate>
+            <h2>Gallery</h2>
+            <img src="https://via.placeholder.com/300x200?text=Project+1" alt="Project 1">
+            <img src="https://via.placeholder.com/300x200?text=Project+2" alt="Project 2">
+            <img src="https://via.placeholder.com/300x200?text=Project+3" alt="Project 3">
+            <img src="https://via.placeholder.com/300x200?text=Project+4" alt="Project 4">
+        </section>
 
-    <section>
-        <h2>What Our Clients Say</h2>
-        <div class="testimonials">“Working with GMMIE Veritas Lab was a game-changer for our brand. Professional, sharp, and truly visionary.”</div>
-        <div class="testimonials">“The real estate media solutions are top-tier. Highly recommend to anyone wanting to stand out.”</div>
-        <div class="testimonials">“From consultation to delivery — their service is premium all the way.”</div>
-    </section>
+        <section class="reviews" data-animate>
+            <h2>Client Reviews</h2>
+            <div class="review">
+                <p>“Absolutely loved the design work from GMMIE. Professional, clean, and creative!”</p>
+                <strong>— Mercy K., Startup Founder</strong>
+            </div>
+            <div class="review">
+                <p>“Reliable and talented. They helped us bring our brand to life online.”</p>
+                <strong>— John M., Real Estate Consultant</strong>
+            </div>
+            <div class="review">
+                <p>“Best creative team I’ve worked with in Nairobi. Their visuals are unmatched.”</p>
+                <strong>— Diana O., Influencer & Blogger</strong>
+            </div>
+        </section>
 
-    <section class="contact">
-        <h2>Contact Us</h2>
-        <p>📍 <strong>Based in Nairobi, Kenya</strong></p>
-        <p>📞 <strong>+254 746 061 204</strong></p>
-        <p>📧 <strong>murimijames058@gmail.com</strong></p>
-        <p>💬 <strong>WhatsApp Available</strong></p>
-        <p>🚀 <strong>Crafted by Creatives, Inspired by Tomorrow.</strong></p>
-    </section>
+        <section class="contact" data-animate>
+            <h2>Contact Us</h2>
+            <p><strong>📍 Location:</strong> Nairobi, Kenya</p>
+            <p><strong>📞 WhatsApp:</strong> <a href="https://wa.me/254746061204" target="_blank">+254 746 061 204</a></p>
+            <p><strong>✉️ Email:</strong> <a href="mailto:murimijames058@gmail.com">murimijames058@gmail.com</a></p>
+        
+        <section class="brochure" data-animate>
+            <h2>Download Brochure</h2>
+            <p>Get a full summary of our services and projects.</p>
+            <a href="https://example.com/GMMIE_Brochure.pdf" target="_blank" style="
+                display: inline-block;
+                background-color: #003366;
+                color: white;
+                padding: 10px 20px;
+                border-radius: 5px;
+                text-decoration: none;
+                margin-top: 10px;
+            ">Download Brochure</a>
+        </section>
+    </main>
+
 
     <footer>
-        <p>My Pleasure — GMMIE Veritas Lab</p>
+        <p>&copy; 2025 GMMIE Veritas Lab. All rights reserved.</p>
     </footer>
 </body>
 </html>
