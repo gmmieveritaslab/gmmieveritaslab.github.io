@@ -1,167 +1,400 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GMMIE Veritas Lab</title>
+    <title>Gmmie Veritas Lab | Creative Agency</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        :root {
+            --gold: #D4AF37;
+            --dark: #0F0F0F;
+            --light: #FAFAFA;
+        }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f7fa;
-            color: #222;
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--dark);
+            color: var(--light);
+            scroll-behavior: smooth;
         }
-        header {
-            background-color: #003366;
-            color: white;
-            padding: 20px;
-            text-align: center;
+
+        .text-gold {
+            color: var(--gold);
         }
-        main {
-            padding: 40px 20px;
+
+        .bg-gold {
+            background-color: var(--gold);
         }
-        h1, h2 {
-            color: #003366;
+
+        .border-gold {
+            border-color: var(--gold);
         }
-        section {
-            margin-bottom: 40px;
+
+        .section {
+            padding: 6rem 0;
         }
-        .contact a {
-            color: #0077cc;
-            text-decoration: none;
+
+        .glass-card {
+            background: rgba(15, 15, 15, 0.4);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
         }
-        .contact a:hover {
-            text-decoration: underline;
+
+        .hover-scale {
+            transition: transform 0.3s ease;
         }
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
+
+        .hover-scale:hover {
+            transform: translateY(-5px);
         }
-        .gallery img {
+
+        .hero-video {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
-            height: auto;
-            border-radius: 8px;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+            opacity: 0.15;
         }
-        .reviews {
-            background: #e9eef4;
-            padding: 20px;
-            border-radius: 10px;
-        }
-        .review {
-            margin-bottom: 20px;
-        }
-        .review p {
-            font-style: italic;
-        }
-        .review strong {
-            display: block;
-            margin-top: 5px;
-        }
-        footer {
-            background-color: #003366;
-            color: white;
-            text-align: center;
-            padding: 15px;
-        }
-    </style>
 
-    <style>
-        [data-animate] {
+        .nav-link {
+            position: relative;
+        }
+
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--gold);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover:after {
+            width: 100%;
+        }
+
+        .service-card {
+            transition: all 0.3s ease;
+            transform: perspective(1000px) rotateX(0deg);
+        }
+
+        .service-card:hover {
+            transform: perspective(1000px) rotateX(5deg);
+            box-shadow: 0 20px 25px -5px rgba(212, 175, 55, 0.1), 0 10px 10px -5px rgba(212, 175, 55, 0.04);
+        }
+
+        .testimonial-slide {
             opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.6s ease-in-out;
+            transition: opacity 0.5s ease;
         }
-        [data-animate].visible {
+
+        .testimonial-slide.active {
             opacity: 1;
-            transform: translateY(0);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .fade-in {
+            animation: fadeIn 1s ease forwards;
+        }
+
+        input, textarea {
+            background: rgba(250, 250, 250, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        input:focus, textarea:focus {
+            background: rgba(250, 250, 250, 0.2);
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.5);
         }
     </style>
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const observer = new IntersectionObserver(entries => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add("visible");
-                    }
-                });
-            }, { threshold: 0.1 });
-            document.querySelectorAll("[data-animate]").forEach(el => observer.observe(el));
-        });
-    </script>
 </head>
+<body class="min-h-screen overflow-x-hidden">
+    <div class="relative">
+        <!-- Video Background -->
+        <video autoplay muted loop class="hero-video">
+            <source src="https://assets.mixkit.co/videos/preview/mixkit-waves-in-the-water-1164-large.mp4" type="video/mp4">
+        </video>
 
-<body>
-    <header>
-        <h1>GMMIE Veritas Lab</h1>
-        <p>Crafted by Creatives, Inspired by Tomorrow</p>
-    </header>
-
-    <main>
-        <section data-animate>
-            <h2>What We Offer</h2>
-            <ul>
-                <li><strong>Web Design & Development:</strong> Visually stunning, responsive websites built to perform.</li>
-                <li><strong>UI/UX Design:</strong> Clean, user-friendly experiences with aesthetic clarity.</li>
-                <li><strong>Brand Identity & Strategy:</strong> Memorable branding that tells your story with style.</li>
-                <li><strong>Motion & Interactive Design:</strong> Sleek animations & transitions that bring your brand to life.</li>
-                <li><strong>Graphic Design (Digital & Print):</strong> From social media visuals to sharp print assets.</li>
-                <li><strong>Creative Consultation:</strong> Expert advice to turn your vision into results.</li>
-                <li><strong>Real Estate Media Specialist</strong></li>
-            </ul>
-        </section>
-
-        <section class="gallery" data-animate>
-            <h2>Gallery</h2>
-            <img src="https://via.placeholder.com/300x200?text=Project+1" alt="Project 1">
-            <img src="https://via.placeholder.com/300x200?text=Project+2" alt="Project 2">
-            <img src="https://via.placeholder.com/300x200?text=Project+3" alt="Project 3">
-            <img src="https://via.placeholder.com/300x200?text=Project+4" alt="Project 4">
-        </section>
-
-        <section class="reviews" data-animate>
-            <h2>Client Reviews</h2>
-            <div class="review">
-                <p>“Absolutely loved the design work from GMMIE. Professional, clean, and creative!”</p>
-                <strong>— Mercy K., Startup Founder</strong>
+        <!-- Navigation -->
+        <nav class="fixed w-full z-50 py-4 px-6 md:px-12 glass-card">
+            <div class="flex justify-between items-center max-w-7xl mx-auto">
+                <a href="#" class="text-2xl font-bold text-gold">GV<span class="text-white">Lab</span></a>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="nav-link text-white hover:text-gold">Home</a>
+                    <a href="#services" class="nav-link text-white hover:text-gold">Services</a>
+                    <a href="#work" class="nav-link text-white hover:text-gold">Work</a>
+                    <a href="#about" class="nav-link text-white hover:text-gold">About</a>
+                    <a href="#contact" class="nav-link text-white hover:text-gold">Contact</a>
+                </div>
+                <button class="md:hidden text-white focus:outline-none">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
             </div>
-            <div class="review">
-                <p>“Reliable and talented. They helped us bring our brand to life online.”</p>
-                <strong>— John M., Real Estate Consultant</strong>
-            </div>
-            <div class="review">
-                <p>“Best creative team I’ve worked with in Nairobi. Their visuals are unmatched.”</p>
-                <strong>— Diana O., Influencer & Blogger</strong>
+        </nav>
+
+        <!-- Hero Section -->
+        <section id="home" class="h-screen flex items-center relative overflow-hidden">
+            <div class="px-6 md:px-12 max-w-7xl mx-auto text-center md:text-left fade-in">
+                <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-6">
+                    Where <span class="text-gold">Creative Vision</span><br>Meets Digital Precision
+                </h1>
+                <p class="text-xl text-gray-300 mb-12 max-w-2xl mx-auto md:mx-0">
+                    We craft timeless digital experiences and visual stories that captivate.
+                </p>
+                <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6 justify-center md:justify-start">
+                    <button class="bg-gold text-dark font-semibold px-8 py-3 rounded hover:bg-yellow-600 transition duration-300 transform hover:scale-105">
+                        Start a Project
+                    </button>
+                    <button class="border-2 border-gold text-white font-semibold px-8 py-3 rounded hover:bg-gold hover:text-dark transition duration-300 transform hover:scale-105">
+                        View Portfolio
+                    </button>
+                </div>
             </div>
         </section>
 
-        <section class="contact" data-animate>
-            <h2>Contact Us</h2>
-            <p><strong>📍 Location:</strong> Nairobi, Kenya</p>
-            <p><strong>📞 WhatsApp:</strong> <a href="https://wa.me/254746061204" target="_blank">+254 746 061 204</a></p>
-            <p><strong>✉️ Email:</strong> <a href="mailto:murimijames058@gmail.com">murimijames058@gmail.com</a></p>
-        
-        <section class="brochure" data-animate>
-            <h2>Download Brochure</h2>
-            <p>Get a full summary of our services and projects.</p>
-            <a href="https://example.com/GMMIE_Brochure.pdf" target="_blank" style="
-                display: inline-block;
-                background-color: #003366;
-                color: white;
-                padding: 10px 20px;
-                border-radius: 5px;
-                text-decoration: none;
-                margin-top: 10px;
-            ">Download Brochure</a>
+        <!-- Services Section -->
+        <section id="services" class="section">
+            <div class="max-w-7xl mx-auto px-6 md:px-12">
+                <div class="text-center mb-16 fade-in">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">What <span class="text-gold">We Offer</span></h2>
+                    <p class="text-gray-400 max-w-2xl mx-auto">
+                        Comprehensive creative services tailored to elevate your digital presence
+                    </p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Service 1 -->
+                    <div class="service-card glass-card p-8 rounded-lg hover-scale">
+                        <div class="text-gold text-4xl mb-6">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3">Web Design & Development</h3>
+                        <p class="text-gray-400">
+                            Visually stunning, responsive websites built to perform with cutting-edge technologies and optimized for conversions.
+                        </p>
+                    </div>
+                    
+                    <!-- Service 2 -->
+                    <div class="service-card glass-card p-8 rounded-lg hover-scale">
+                        <div class="text-gold text-4xl mb-6">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3">UI/UX Design</h3>
+                        <p class="text-gray-400">
+                            Clean, user-friendly experiences with aesthetic clarity that engages users and enhances satisfaction.
+                        </p>
+                    </div>
+                    
+                    <!-- Service 3 -->
+                    <div class="service-card glass-card p-8 rounded-lg hover-scale">
+                        <div class="text-gold text-4xl mb-6">
+                            <i class="fas fa-palette"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3">Brand Identity & Strategy</h3>
+                        <p class="text-gray-400">
+                            Memorable branding that tells your story with style, from logo design to full visual identity systems.
+                        </p>
+                    </div>
+                    
+                    <!-- Service 4 -->
+                    <div class="service-card glass-card p-8 rounded-lg hover-scale">
+                        <div class="text-gold text-4xl mb-6">
+                            <i class="fas fa-film"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3">Motion & Interactive Design</h3>
+                        <p class="text-gray-400">
+                            Sleek animations & transitions that bring your brand to life with captivating movement and interactivity.
+                        </p>
+                    </div>
+                    
+                    <!-- Service 5 -->
+                    <div class="service-card glass-card p-8 rounded-lg hover-scale">
+                        <div class="text-gold text-4xl mb-6">
+                            <i class="fas fa-paint-brush"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3">Graphic Design</h3>
+                        <p class="text-gray-400">
+                            From social media visuals to sharp print assets that communicate your message with impact.
+                        </p>
+                    </div>
+                    
+                    <!-- Service 6 -->
+                    <div class="service-card glass-card p-8 rounded-lg hover-scale">
+                        <div class="text-gold text-4xl mb-6">
+                            <i class="fas fa-building"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3">Real Estate Media</h3>
+                        <p class="text-gray-400">
+                            High-converting visuals, brochures, and websites for agents, developers, and investors to showcase properties.
+                        </p>
+                    </div>
+                </div>
+            </div>
         </section>
-    </main>
 
+        <!-- Gallery Section -->
+        <section id="work" class="section bg-black bg-opacity-70">
+            <div class="max-w-7xl mx-auto px-6 md:px-12">
+                <div class="text-center mb-16 fade-in">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Our <span class="text-gold">Portfolio</span></h2>
+                    <p class="text-gray-400 max-w-2xl mx-auto">
+                        A selection of our recent work that showcases our creative approach
+                    </p>
+                </div>
 
-    <footer>
-        <p>&copy; 2025 GMMIE Veritas Lab. All rights reserved.</p>
-    </footer>
-</body>
-</html>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Project 1 -->
+                    <div class="overflow-hidden rounded-lg glass-card hover-scale group">
+                        <div class="relative overflow-hidden h-64">
+                            <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                                 alt="Project 1" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                            <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                <button class="bg-gold text-dark px-6 py-2 rounded font-semibold">View Case Study</button>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2">Luxury Real Estate Website</h3>
+                            <p class="text-gray-400">Web Design & Development</p>
+                        </div>
+                    </div>
+
+                    <!-- Project 2 -->
+                    <div class="overflow-hidden rounded-lg glass-card hover-scale group">
+                        <div class="relative overflow-hidden h-64">
+                            <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" 
+                                 alt="Project 2" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                            <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                <button class="bg-gold text-dark px-6 py-2 rounded font-semibold">View Case Study</button>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2">Corporate Brand Identity</h3>
+                            <p class="text-gray-400">Brand Identity Design</p>
+                        </div>
+                    </div>
+
+                    <!-- Project 3 -->
+                    <div class="overflow-hidden rounded-lg glass-card hover-scale group">
+                        <div class="relative overflow-hidden h-64">
+                            <img src="https://images.unsplash.com/photo-1563003082-8d50a01a50b8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                                 alt="Project 3" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                            <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                <button class="bg-gold text-dark px-6 py-2 rounded font-semibold">View Case Study</button>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2">E-commerce Mobile App</h3>
+                            <p class="text-gray-400">UI/UX Design</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center mt-16">
+                    <button class="border-2 border-gold text-white font-semibold px-8 py-3 rounded hover:bg-gold hover:text-dark transition duration-300">
+                        View All Projects
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section class="section">
+            <div class="max-w-7xl mx-auto px-6 md:px-12">
+                <div class="text-center mb-16 fade-in">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Client <span class="text-gold">Testimonials</span></h2>
+                    <p class="text-gray-400 max-w-2xl mx-auto">
+                        Don't just take our word for it - hear what our clients say
+                    </p>
+                </div>
+
+                <div class="relative max-w-4xl mx-auto">
+                    <div class="testimonial-slide active glass-card p-8 md:p-12 rounded-lg">
+                        <div class="text-gold text-4xl mb-6">"</div>
+                        <p class="text-lg md:text-xl text-gray-300 mb-6">
+                            Gmmie Veritas Lab transformed our digital presence completely. Their attention to detail and creative vision resulted in a website that not only looks stunning but has significantly increased our conversion rates.
+                        </p>
+                        <div class="flex items-center">
+                            <div class="w-16 h-16 rounded-full bg-gray-700 overflow-hidden mr-4">
+                                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Client 1" class="w-full h-full object-cover">
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-lg">Jackson Mwangi</h4>
+                                <p class="text-gray-400">CEO, Nexus Properties</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-slide glass-card p-8 md:p-12 rounded-lg absolute top-0 left-0 w-full">
+                        <div class="text-gold text-4xl mb-6">"</div>
+                        <p class="text-lg md:text-xl text-gray-300 mb-6">
+                            Working with GV Lab was a game-changer for our brand. They understood our vision from day one and delivered a comprehensive brand identity that perfectly represents our values. The entire team is incredibly talented.
+                        </p>
+                        <div class="flex items-center">
+                            <div class="w-16 h-16 rounded-full bg-gray-700 overflow-hidden mr-4">
+                                <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Client 2" class="w-full h-full object-cover">
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-lg">Wanjiru Kariuki</h4>
+                                <p class="text-gray-400">Marketing Director, AfyaPlus</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex justify-center mt-10 space-x-2">
+                        <button class="testimonial-dot w-3 h-3 rounded-full bg-gray-700 focus:outline-none active"></button>
+                        <button class="testimonial-dot w-3 h-3 rounded-full bg-gray-700 focus:outline-none"></button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Us Section -->
+        <section id="about" class="section bg-black bg-opacity-70">
+            <div class="max-w-7xl mx-auto px-6 md:px-12">
+                <div class="text-center mb-16 fade-in">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Why <span class="text-gold">Gmmie Veritas Lab</span></h2>
+                    <p class="text-gray-400 max-w-2xl mx-auto">
+                        We approach every project with a unique perspective to deliver exceptional results
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="glass-card p-6 rounded-lg hover-scale">
+                        <div class="text-gold mb-4">
+                            <i class="fas fa-lightbulb text-3xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Design-first Mindset</h3>
+                        <p class="text-gray-400">
+                            Every pixel is considered, every interaction crafted, because design is not just how it looks but how it works.
+                        </p>
+                    </div>
+
+                    <div class="glass-card p-6 rounded-lg hover-scale">
+                        <div class="text-gold mb-4">
+                            <i class="fas fa-code text-3xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Technical Excellence</h3>
+                        <p class="text-gray-400">
+                            We combine aesthetic appeal with robust technical solutions for websites that perform flawlessly.
+                        </p>
+                    </div>
+
+                    <div class="glass-card p-6 rounded-lg hover-scale">
+                        <div class="text-gold mb-4">
+                            <i class="fas fa-handshake text-3xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Client-focused Appro
