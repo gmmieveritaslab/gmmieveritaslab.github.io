@@ -130,6 +130,47 @@
         .delay-8 {
             animation-delay: 1.6s;
         }
+        
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            overflow-y: auto;
+        }
+        
+        .modal-content {
+            background-color: #1a1a1a;
+            margin: 5% auto;
+            padding: 30px;
+            border: 1px solid #D4AF37;
+            width: 80%;
+            max-width: 900px;
+            border-radius: 10px;
+            position: relative;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 25px;
+            color: #D4AF37;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        .portfolio-modal-img {
+            width: 100%;
+            max-height: 500px;
+            object-fit: contain;
+            margin-bottom: 20px;
+        }
     </style>
 </head>
 <body class="overflow-x-hidden">
@@ -291,7 +332,7 @@
                     <div class="portfolio-overlay absolute inset-0 bg-black bg-opacity-70 flex flex-col justify-center items-center p-6">
                         <h3 class="text-xl font-bold text-white mb-2">Luxury Hotel Website</h3>
                         <p class="text-gray-300 text-center mb-4">Modern responsive design with booking integration</p>
-                        <a href="#" class="gold-text font-medium hover:underline">View Project</a>
+                        <button onclick="openModal('luxury-hotel')" class="gold-text font-medium hover:underline">View Project</button>
                     </div>
                 </div>
                 
@@ -301,7 +342,7 @@
                     <div class="portfolio-overlay absolute inset-0 bg-black bg-opacity-70 flex flex-col justify-center items-center p-6">
                         <h3 class="text-xl font-bold text-white mb-2">Fashion Brand Identity</h3>
                         <p class="text-gray-300 text-center mb-4">Complete branding package for luxury fashion label</p>
-                        <a href="#" class="gold-text font-medium hover:underline">View Project</a>
+                        <button onclick="openModal('fashion-brand')" class="gold-text font-medium hover:underline">View Project</button>
                     </div>
                 </div>
                 
@@ -311,7 +352,7 @@
                     <div class="portfolio-overlay absolute inset-0 bg-black bg-opacity-70 flex flex-col justify-center items-center p-6">
                         <h3 class="text-xl font-bold text-white mb-2">Luxury Apartment Marketing</h3>
                         <p class="text-gray-300 text-center mb-4">Complete digital and print marketing materials</p>
-                        <a href="#" class="gold-text font-medium hover:underline">View Project</a>
+                        <button onclick="openModal('luxury-apartment')" class="gold-text font-medium hover:underline">View Project</button>
                     </div>
                 </div>
                 
@@ -321,7 +362,7 @@
                     <div class="portfolio-overlay absolute inset-0 bg-black bg-opacity-70 flex flex-col justify-center items-center p-6">
                         <h3 class="text-xl font-bold text-white mb-2">Fintech Mobile App</h3>
                         <p class="text-gray-300 text-center mb-4">User-centered design for investment platform</p>
-                        <a href="#" class="gold-text font-medium hover:underline">View Project</a>
+                        <button onclick="openModal('fintech-app')" class="gold-text font-medium hover:underline">View Project</button>
                     </div>
                 </div>
                 
@@ -331,7 +372,7 @@
                     <div class="portfolio-overlay absolute inset-0 bg-black bg-opacity-70 flex flex-col justify-center items-center p-6">
                         <h3 class="text-xl font-bold text-white mb-2">Corporate Branding</h3>
                         <p class="text-gray-300 text-center mb-4">Complete visual identity for tech startup</p>
-                        <a href="#" class="gold-text font-medium hover:underline">View Project</a>
+                        <button onclick="openModal('corporate-branding')" class="gold-text font-medium hover:underline">View Project</button>
                     </div>
                 </div>
                 
@@ -341,18 +382,28 @@
                     <div class="portfolio-overlay absolute inset-0 bg-black bg-opacity-70 flex flex-col justify-center items-center p-6">
                         <h3 class="text-xl font-bold text-white mb-2">Product Animation</h3>
                         <p class="text-gray-300 text-center mb-4">3D product visualization for marketing campaign</p>
-                        <a href="#" class="gold-text font-medium hover:underline">View Project</a>
+                        <button onclick="openModal('product-animation')" class="gold-text font-medium hover:underline">View Project</button>
                     </div>
                 </div>
             </div>
             
             <div class="text-center mt-12 animate-in delay-8">
-                <a href="#" class="inline-block border-2 gold-border text-white font-bold py-3 px-8 rounded-full hover:bg-yellow-500 hover:bg-opacity-10 transition duration-300">
+                <button onclick="openModal('all-projects')" class="inline-block border-2 gold-border text-white font-bold py-3 px-8 rounded-full hover:bg-yellow-500 hover:bg-opacity-10 transition duration-300">
                     View All Projects
-                </a>
+                </button>
             </div>
         </div>
     </section>
+
+    <!-- Portfolio Modals -->
+    <div id="portfolio-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <div id="modal-content">
+                <!-- Content will be inserted here by JavaScript -->
+            </div>
+        </div>
+    </div>
 
     <!-- Testimonials Section -->
     <section id="testimonials" class="py-20 bg-black">
@@ -539,7 +590,9 @@
                                 </div>
                                 <div>
                                     <h4 class="text-lg font-medium text-white mb-1">Email</h4>
-                                    <p class="text-gray-400">murimijames058@gmail.com</p>
+                                    <a href="mailto:murimijames058@gmail.com" class="text-gray-400 hover:text-yellow-500 transition duration-300">
+                                        murimijames058@gmail.com
+                                    </a>
                                 </div>
                             </div>
                             
@@ -549,7 +602,9 @@
                                 </div>
                                 <div>
                                     <h4 class="text-lg font-medium text-white mb-1">WhatsApp</h4>
-                                    <p class="text-gray-400">+254 746 061 204</p>
+                                    <a href="https://wa.me/254746061204" target="_blank" class="text-gray-400 hover:text-yellow-500 transition duration-300">
+                                        +254 746 061 204
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -577,30 +632,36 @@
                 <div class="animate-in delay-3">
                     <div class="glass-card p-8 rounded-xl">
                         <h3 class="text-2xl font-bold text-white mb-6">Send Us a Message</h3>
-                        <form class="space-y-6">
+                        <form id="contact-form" class="space-y-6">
                             <div>
-                                <label for="name" class="block text-sm font-medium text-gray-300 mb-1">Your Name</label>
-                                <input type="text" id="name" class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent" placeholder="Enter your name">
+                                <label for="name" class="block text-sm font-medium text-gray-300 mb-1">Your Name *</label>
+                                <input type="text" id="name" name="name" required class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent" placeholder="Enter your name">
                             </div>
                             
                             <div>
-                                <label for="email" class="block text-sm font-medium text-gray-300 mb-1">Email Address</label>
-                                <input type="email" id="email" class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent" placeholder="Enter your email">
+                                <label for="email" class="block text-sm font-medium text-gray-300 mb-1">Email Address *</label>
+                                <input type="email" id="email" name="email" required class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent" placeholder="Enter your email">
                             </div>
                             
                             <div>
-                                <label for="subject" class="block text-sm font-medium text-gray-300 mb-1">Subject</label>
-                                <input type="text" id="subject" class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent" placeholder="What's this about?">
+                                <label for="subject" class="block text-sm font-medium text-gray-300 mb-1">Subject *</label>
+                                <input type="text" id="subject" name="subject" required class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent" placeholder="What's this about?">
                             </div>
                             
                             <div>
-                                <label for="message" class="block text-sm font-medium text-gray-300 mb-1">Message</label>
-                                <textarea id="message" rows="4" class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent" placeholder="Tell us about your project"></textarea>
+                                <label for="message" class="block text-sm font-medium text-gray-300 mb-1">Message *</label>
+                                <textarea id="message" name="message" rows="4" required class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent" placeholder="Tell us about your project"></textarea>
                             </div>
                             
                             <button type="submit" class="gold-bg text-black font-bold py-3 px-6 rounded-lg hover:bg-yellow-600 transition duration-300 w-full">
                                 Send Message
                             </button>
+                            <div id="form-success" class="hidden text-center text-green-500 mt-4">
+                                Message sent successfully! We'll get back to you soon.
+                            </div>
+                            <div id="form-error" class="hidden text-center text-red-500 mt-4">
+                                There was an error sending your message. Please try again or contact us directly.
+                            </div>
                         </form>
                     </div>
                 </div>
@@ -724,6 +785,217 @@
                     mobileMenu.classList.add('hidden');
                 }
             });
+        });
+
+        // Contact form submission
+        const contactForm = document.getElementById('contact-form');
+        const formSuccess = document.getElementById('form-success');
+        const formError = document.getElementById('form-error');
+        
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Hide previous messages
+            formSuccess.classList.add('hidden');
+            formError.classList.add('hidden');
+            
+            // Get form data
+            const formData = new FormData(contactForm);
+            
+            // Here you would typically send the data to a server
+            // For demo purposes, we'll simulate a successful submission
+            setTimeout(() => {
+                // Show success message
+                formSuccess.classList.remove('hidden');
+                
+                // Reset form
+                contactForm.reset();
+                
+                // Hide success message after 5 seconds
+                setTimeout(() => {
+                    formSuccess.classList.add('hidden');
+                }, 5000);
+            }, 1000);
+            
+            // In a real implementation, you would use fetch or AJAX to send the data
+            /*
+            fetch('your-server-endpoint', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {
+                if (response.ok) {
+                    formSuccess.classList.remove('hidden');
+                    contactForm.reset();
+                } else {
+                    throw new Error('Network response was not ok');
+                }
+            })
+            .catch(error => {
+                formError.classList.remove('hidden');
+            });
+            */
+        });
+
+        // Portfolio modal functionality
+        function openModal(projectId) {
+            const modal = document.getElementById('portfolio-modal');
+            const modalContent = document.getElementById('modal-content');
+            
+            // Create content based on which project was clicked
+            let content = '';
+            
+            if (projectId === 'all-projects') {
+                content = `
+                    <h2 class="text-3xl font-bold text-white mb-6">All Projects</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <h3 class="text-xl font-bold text-white mb-2">Luxury Hotel Website</h3>
+                            <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1364&q=80" alt="Luxury Hotel Website" class="portfolio-modal-img">
+                            <p class="text-gray-300 mb-4">Modern responsive design with booking integration for a luxury hotel chain. Features include seamless room selection, real-time availability, and online payment processing.</p>
+                            <p class="text-gray-400"><strong>Technologies:</strong> React, Node.js, MongoDB, Stripe API</p>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-white mb-2">Fashion Brand Identity</h3>
+                            <img src="https://images.unsplash.com/photo-1551282102-0c7055f1a5d2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Fashion Brand Identity" class="portfolio-modal-img">
+                            <p class="text-gray-300 mb-4">Complete branding package including logo design, color palette, typography, and brand guidelines for a luxury fashion label.</p>
+                            <p class="text-gray-400"><strong>Services:</strong> Brand Strategy, Logo Design, Visual Identity</p>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-white mb-2">Luxury Apartment Marketing</h3>
+                            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Luxury Apartment Marketing" class="portfolio-modal-img">
+                            <p class="text-gray-300 mb-4">Complete digital and print marketing materials for a luxury apartment development, resulting in a sell-out 3 months ahead of schedule.</p>
+                            <p class="text-gray-400"><strong>Services:</strong> Photography, Videography, Brochure Design</p>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-white mb-2">Fintech Mobile App</h3>
+                            <img src="https://images.unsplash.com/photo-1522542550221-31fd19575a2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Fintech Mobile App" class="portfolio-modal-img">
+                            <p class="text-gray-300 mb-4">User-centered design for an investment platform with intuitive navigation, secure transactions, and personalized portfolio tracking.</p>
+                            <p class="text-gray-400"><strong>Technologies:</strong> Flutter, Firebase, Plaid API</p>
+                        </div>
+                    </div>
+                `;
+            } else {
+                // Individual project details
+                switch(projectId) {
+                    case 'luxury-hotel':
+                        content = `
+                            <h2 class="text-3xl font-bold text-white mb-6">Luxury Hotel Website</h2>
+                            <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1364&q=80" alt="Luxury Hotel Website" class="portfolio-modal-img">
+                            <p class="text-gray-300 mb-4">Modern responsive design with booking integration for a luxury hotel chain. Features include:</p>
+                            <ul class="text-gray-300 mb-6 list-disc pl-5">
+                                <li>Seamless room selection with high-quality imagery</li>
+                                <li>Real-time availability checking</li>
+                                <li>Secure online payment processing</li>
+                                <li>Mobile-optimized booking flow</li>
+                                <li>Integration with property management system</li>
+                            </ul>
+                            <p class="text-gray-400"><strong>Technologies:</strong> React, Node.js, MongoDB, Stripe API</p>
+                            <p class="text-gray-400 mt-4"><strong>Result:</strong> 40% increase in online bookings within first month of launch.</p>
+                        `;
+                        break;
+                    case 'fashion-brand':
+                        content = `
+                            <h2 class="text-3xl font-bold text-white mb-6">Fashion Brand Identity</h2>
+                            <img src="https://images.unsplash.com/photo-1551282102-0c7055f1a5d2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Fashion Brand Identity" class="portfolio-modal-img">
+                            <p class="text-gray-300 mb-4">Complete branding package for a luxury fashion label including:</p>
+                            <ul class="text-gray-300 mb-6 list-disc pl-5">
+                                <li>Logo design with multiple variations</li>
+                                <li>Color palette development</li>
+                                <li>Typography system</li>
+                                <li>Brand guidelines documentation</li>
+                                <li>Packaging design</li>
+                                <li>Social media templates</li>
+                            </ul>
+                            <p class="text-gray-400"><strong>Services:</strong> Brand Strategy, Logo Design, Visual Identity</p>
+                            <p class="text-gray-400 mt-4"><strong>Result:</strong> Established a distinctive visual identity that helped the brand stand out in a competitive market.</p>
+                        `;
+                        break;
+                    case 'luxury-apartment':
+                        content = `
+                            <h2 class="text-3xl font-bold text-white mb-6">Luxury Apartment Marketing</h2>
+                            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Luxury Apartment Marketing" class="portfolio-modal-img">
+                            <p class="text-gray-300 mb-4">Complete digital and print marketing materials for a luxury apartment development, including:</p>
+                            <ul class="text-gray-300 mb-6 list-disc pl-5">
+                                <li>Professional photography of interiors and amenities</li>
+                                <li>Virtual tours and 360° views</li>
+                                <li>Luxury brochure design</li>
+                                <li>Digital advertisements</li>
+                                <li>Sales website with lead capture</li>
+                            </ul>
+                            <p class="text-gray-400"><strong>Services:</strong> Photography, Videography, Brochure Design, Web Development</p>
+                            <p class="text-gray-400 mt-4"><strong>Result:</strong> Development sold out 3 months ahead of schedule.</p>
+                        `;
+                        break;
+                    case 'fintech-app':
+                        content = `
+                            <h2 class="text-3xl font-bold text-white mb-6">Fintech Mobile App</h2>
+                            <img src="https://images.unsplash.com/photo-1522542550221-31fd19575a2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Fintech Mobile App" class="portfolio-modal-img">
+                            <p class="text-gray-300 mb-4">User-centered design for an investment platform with features including:</p>
+                            <ul class="text-gray-300 mb-6 list-disc pl-5">
+                                <li>Intuitive navigation and onboarding</li>
+                                <li>Secure transaction processing</li>
+                                <li>Personalized portfolio tracking</li>
+                                <li>Market data visualization</li>
+                                <li>Biometric authentication</li>
+                            </ul>
+                            <p class="text-gray-400"><strong>Technologies:</strong> Flutter, Firebase, Plaid API</p>
+                            <p class="text-gray-400 mt-4"><strong>Result:</strong> 4.8-star rating in app stores with 90% user retention after 3 months.</p>
+                        `;
+                        break;
+                    case 'corporate-branding':
+                        content = `
+                            <h2 class="text-3xl font-bold text-white mb-6">Corporate Branding</h2>
+                            <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Corporate Branding" class="portfolio-modal-img">
+                            <p class="text-gray-300 mb-4">Complete visual identity for tech startup including:</p>
+                            <ul class="text-gray-300 mb-6 list-disc pl-5">
+                                <li>Logo design and variations</li>
+                                <li>Brand color system</li>
+                                <li>Typography hierarchy</li>
+                                <li>Iconography system</li>
+                                <li>Business stationery</li>
+                                <li>Presentation templates</li>
+                            </ul>
+                            <p class="text-gray-400"><strong>Services:</strong> Brand Strategy, Visual Identity, Graphic Design</p>
+                            <p class="text-gray-400 mt-4"><strong>Result:</strong> Established a professional, cohesive brand presence that helped secure Series A funding.</p>
+                        `;
+                        break;
+                    case 'product-animation':
+                        content = `
+                            <h2 class="text-3xl font-bold text-white mb-6">Product Animation</h2>
+                            <img src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1472&q=80" alt="Product Animation" class="portfolio-modal-img">
+                            <p class="text-gray-300 mb-4">3D product visualization for marketing campaign including:</p>
+                            <ul class="text-gray-300 mb-6 list-disc pl-5">
+                                <li>3D modeling of product</li>
+                                <li>Animation of key features</li>
+                                <li>Interactive web version</li>
+                                <li>Social media snippets</li>
+                                <li>Trade show display version</li>
+                            </ul>
+                            <p class="text-gray-400"><strong>Services:</strong> 3D Modeling, Animation, Interactive Design</p>
+                            <p class="text-gray-400 mt-4"><strong>Result:</strong> Increased engagement by 150% compared to previous static product images.</p>
+                        `;
+                        break;
+                }
+            }
+            
+            modalContent.innerHTML = content;
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('portfolio-modal');
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside content
+        window.addEventListener('click', (event) => {
+            const modal = document.getElementById('portfolio-modal');
+            if (event.target === modal) {
+                closeModal();
+            }
         });
     </script>
 </body>
